@@ -9,5 +9,4 @@ require (
 
 go 1.13
 
-
-replace github.com/hsiafan/httpdump => github.com/kitsudog/httpdump v0.0.0-20211213015743-9746b187e679
+replace github.com/hsiafan/httpdump => github.com/kitsudog/httpdump v0.2
