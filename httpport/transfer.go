@@ -648,6 +648,10 @@ func (b *body) readLocked(p []byte) (n int, err error) {
 	}
 	n, err = b.src.Read(p)
 
+	if err == io.ErrUnexpectedEOF {
+		// 修正pcap文件过早结束可能导致的死循环
+		return n, io.EOF
+	}
 	if err == io.EOF {
 		b.sawEOF = true
 		// Chunked case. Read the trailer.
