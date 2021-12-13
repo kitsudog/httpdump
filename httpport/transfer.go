@@ -637,6 +637,7 @@ func (b *body) Read(p []byte) (n int, err error) {
 	defer b.mu.Unlock()
 	if b.closed {
 		// PATCH: 文件不完整
+		//return 0, ErrBodyReadAfterClose
 		return 0, io.EOF
 	}
 	return b.readLocked(p)
@@ -650,7 +651,8 @@ func (b *body) readLocked(p []byte) (n int, err error) {
 	n, err = b.src.Read(p)
 
 	if err == io.ErrUnexpectedEOF {
-		// 修正pcap文件过早结束可能导致的死循环
+		//return n, io.ErrUnexpectedEOF
+		// PATCH:修正pcap文件过早结束可能导致的死循环
 		return n, io.EOF
 	}
 	if err == io.EOF {

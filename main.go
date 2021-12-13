@@ -149,7 +149,6 @@ func run(option *Option) error {
 	assembler.filterIP = option.Ip
 	assembler.filterPort = uint16(option.Port)
 	var ticker = time.Tick(time.Second * 10)
-
 outer:
 	for {
 		select {
@@ -158,8 +157,7 @@ outer:
 			if packet == nil {
 				break outer
 			}
-
-			// only assembly tcp/ip packets
+			// only assembly tcpf/ip packets
 			if packet.NetworkLayer() == nil || packet.TransportLayer() == nil ||
 				packet.TransportLayer().LayerType() != layers.LayerTypeTCP {
 				continue
