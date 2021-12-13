@@ -8,5 +8,3 @@ require (
 )
 
 go 1.13
-
-replace github.com/hsiafan/httpdump => github.com/kitsudog/httpdump v0.1.1
