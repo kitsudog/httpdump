@@ -14,7 +14,7 @@ import (
 	"time"
 
 	"github.com/hsiafan/glow/iox/filex"
-	"github.com/hsiafan/httpdump/httpport"
+	"github.com/kitsudog/httpdump/httpport"
 
 	"bufio"
 
