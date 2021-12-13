@@ -636,7 +636,8 @@ func (b *body) Read(p []byte) (n int, err error) {
 	b.mu.Lock()
 	defer b.mu.Unlock()
 	if b.closed {
-		return 0, ErrBodyReadAfterClose
+		// PATCH: 文件不完整
+		return 0, io.EOF
 	}
 	return b.readLocked(p)
 }
